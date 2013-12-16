@@ -1,5 +1,5 @@
-# autoswap_mac
-### From Damian Conway’s “More Instantly Better Vim”
+# autoswap_linux
+### From Damian Conway’s “More Instantly Better Vim” and modified to work with GVim sessions
 
 This is simply a repo to host this code in a way that's friendlier to vim plugin managers such as [Pathogen](https://github.com/tpope/vim-pathogen), [Vundle](https://github.com/gmarik/vundle), and [NeoBundle](https://github.com/Shougo/neobundle.vim).
 

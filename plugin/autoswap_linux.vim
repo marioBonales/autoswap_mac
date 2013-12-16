@@ -1,12 +1,11 @@
-" Vim global plugin for automating response to swapfiles
+" Vim global plugin for automating response t  s
 " Maintainer:	Damian Conway
 " License:	This file is placed in the public domain.
 
 "#############################################################
 "##                                                         ##
-"##  Note that this plugin only works for Vim sessions      ##
-"##  running in Terminal on MacOS X. And only if your       ##
-"##  Vim configuration includes:                            ##
+"##  Note that this plugin only work for Gvim sessions      ##
+"##  And only if your Vim configuration includes:           ##
 "##                                                         ##
 "##     set title titlestring=                              ##
 "##                                                         ##
@@ -17,10 +16,10 @@
 
 
 " If already loaded, we're done...
-if exists("loaded_autoswap_mac")
+if exists("loaded_autoswap_linux")
     finish
 endif
-let loaded_autoswap_mac = 1
+let loaded_autoswap_linux = 1
 
 " Preserve external compatibility options, then enable full vim compatibility...
 let s:save_cpo = &cpo
@@ -28,7 +27,7 @@ set cpo&vim
 
 " Invoke the behaviour whenever a swapfile is detected...
 "
-augroup AutoSwap_Mac
+augroup AutoSwap_Linux
     autocmd!
     autocmd SwapExists *  call AS_M_HandleSwapfile(expand('<afile>:p'))
 augroup END
@@ -66,7 +65,7 @@ endfunction
 "
 function! AS_M_DelayedMsg (msg)
     " A sneaky way of injecting a message when swapping into the new buffer...
-    augroup AutoSwap_Mac_Msg
+    augroup AutoSwap_Linux_Msg
         autocmd!
         " Print the message on finally entering the buffer...
         autocmd BufWinEnter *  echohl WarningMsg
@@ -74,7 +73,7 @@ function! AS_M_DelayedMsg (msg)
         autocmd BufWinEnter *  echohl NONE
 
         " And then remove these autocmds, so it's a "one-shot" deal...
-        autocmd BufWinEnter *  augroup AutoSwap_Mac_Msg
+        autocmd BufWinEnter *  augroup AutoSwap_Linux_Msg
         autocmd BufWinEnter *  autocmd!
         autocmd BufWinEnter *  augroup END
     augroup END
